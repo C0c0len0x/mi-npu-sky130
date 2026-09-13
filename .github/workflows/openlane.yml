@@ -16,6 +16,7 @@ jobs:
         run: |
           docker run --rm \
             -e PDK_ROOT=/openlane/pdks \
+            -e PDK=sky130A \
             -v ${{ github.workspace }}:/openlane/designs/npu \
             efabless/openlane:2023.11.23 \
             bash -c "pip install --no-cache-dir volare && volare fetch --pdk sky130 --metadata-file /openlane/dependencies/tool_metadata.yml && volare enable --pdk sky130 --metadata-file /openlane/dependencies/tool_metadata.yml && ./flow.tcl -design npu -config_file /openlane/designs/npu/config.json"
