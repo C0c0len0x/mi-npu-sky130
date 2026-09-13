@@ -16,7 +16,7 @@ jobs:
         run: |
           docker run --rm \
             -v ${{ github.workspace }}:/openlane/designs/npu \
-            efabless/openlane:current \
+            efabless/openlane:2023.11.23 \
             flow.tcl -design npu -config_file /openlane/designs/npu/config.json
 
       - name: Exportar archivo GDSII
