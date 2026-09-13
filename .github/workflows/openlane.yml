@@ -18,7 +18,7 @@ jobs:
             -e PDK_ROOT=/openlane/pdks \
             -v ${{ github.workspace }}:/openlane/designs/npu \
             efabless/openlane:2023.11.23 \
-            bash -c "python3 -m volare fetch --pdk sky130 0fe599b2afb6708d281543108cad8311cdbe8f53 && python3 -m volare enable --pdk sky130 0fe599b2afb6708d281543108cad8311cdbe8f53 && ./flow.tcl -design npu -config_file /openlane/designs/npu/config.json"
+            bash -c "pip install --no-cache-dir volare && volare fetch --pdk sky130 0fe599b2afb6708d281543108cad8311cdbe8f53 && volare enable --pdk sky130 0fe599b2afb6708d281543108cad8311cdbe8f53 && ./flow.tcl -design npu -config_file /openlane/designs/npu/config.json"
 
       - name: Exportar archivo GDSII
         if: always()
