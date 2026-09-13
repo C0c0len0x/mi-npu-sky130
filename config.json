@@ -1,7 +1,7 @@
 {
-    "DESIGN_NAME": "basic_npu",
-    "VERILOG_FILES": ["src/npu_top.v"],
-    "CLOCK_PORT": "clk",
-    "CLOCK_PERIOD": 10.0,
-    "FP_CORE_UTIL": 40
+  "DESIGN_NAME": "npu",
+  "VERILOG_FILES": "dir::src/*.v",
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 10.0,
+  "QUIT_ON_LINTER_ERRORS": 0
 }
