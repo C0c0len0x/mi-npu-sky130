@@ -1,0 +1,26 @@
+name: Generar GDSII con OpenLane
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build-gds:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener código del repositorio
+        uses: actions/checkout@v4
+
+      - name: Ejecutar OpenLane
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/openlane/designs/npu \
+            ghcr.io/the-openroad-project/openlane:v1.0.0 \
+            ./flow.tcl -design npu -config_file /openlane/designs/npu/config.json
+
+      - name: Exportar archivo GDSII
+        uses: actions/upload-artifact@v4
+        with:
+          name: npu-gdsii-layout
+          path: runs/*/results/final/gds/*.gds
